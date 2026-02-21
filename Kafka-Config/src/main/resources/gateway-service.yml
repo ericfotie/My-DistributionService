@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+        - id: compte-service
+          uri: lb://compte-service
+          predicates:
+            - Path=/comptes/**
